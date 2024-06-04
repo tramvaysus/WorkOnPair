@@ -1,0 +1,74 @@
+#include <iostream>
+#include <bitset>
+#include <fstream>
+#include <vector>
+
+int main()
+{
+	setlocale(0, "");
+	int tmp_x;
+	int tmp_y;
+	int tmp_z;
+
+	int cols = 3;
+	int rows = 4;
+
+	std::vector <int> nums;
+
+	std::unique_ptr<std::unique_ptr<int[]>[]> arr(new std::unique_ptr<int[]>[rows]);
+
+	for (int i = 0; i < rows; i++) {
+		arr[i].reset(new int[cols]);
+	}
+
+	std::ifstream file("./text.txt");
+	if (file.is_open()) 
+	{
+		while (!file.eof()) 
+		{
+			for (int i = 0; i < rows; i++)
+			{
+				file >> tmp_x >> tmp_y >> tmp_z;
+
+				for (int j = 0; j < cols; j++)
+				{
+
+					switch (j)
+					{
+						case 0: arr[i][0] = tmp_x;
+						case 1: arr[i][1] = tmp_y;
+						case 2: arr[i][2] = tmp_z;
+					}
+				}
+			}
+		}
+	}
+
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			if (arr[i][j] % 3 == 0 && arr[i][j] != 0)
+			{
+				nums.push_back(arr[i][j]);
+				arr[i][j] = 17;
+			}
+		}
+	}
+	
+	for (int num : nums)
+	{
+		std::cout << num << " ";
+	}
+	std::cout << std::endl;
+
+
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			std::cout  << arr[i][j] << " ";
+		}
+		std::cout << "| " <<  i + 1 << " - строка" << std::endl;
+	}
+}
