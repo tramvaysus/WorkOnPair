@@ -86,3 +86,102 @@ int main()
 //int res_2 = c >> 3;
 //res_2 = res_2 & 4;
 //std::cout << res_2 << std::endl;
+
+
+
+
+
+
+
+//========================5=====================
+#include <iostream>
+#include <bitset>
+#include <fstream>
+#include <vector>
+#include <string>
+
+class Person
+{
+public:
+    std::string second_name;
+    std::string name;
+    std::string otchestvo;
+    int BirthDay;
+    std::string BirthMonth;
+    int BirthYear;
+    std::string title;
+
+    Person(std::string _name, std::string _second_name, std::string _otchestvo, int _BirthDay, std::string _BirthMonth, int _BirthYear, std::string _title)
+    {
+        if (_BirthDay > 0 && _BirthDay < 31 && _BirthYear > 0)
+        {
+            this->name = _name;
+            this->second_name = _second_name;
+            this->otchestvo = _otchestvo;
+            this->BirthDay = _BirthDay;
+            this->BirthMonth = _BirthMonth;
+            this->title = _title;
+
+        }
+        else
+        {
+            std::cout << "Неправильно введена дата рождения" << std::endl;
+        }
+    }
+};
+
+
+int main()
+{
+	setlocale(0, "");
+
+    
+
+    std::string _second_name;
+    std::string _name;
+    std::string _otchestvo;
+    std::string _BirthDay;
+    std::string _BirthMonth;
+    std::string _BirthYear;
+    std::string _title;
+
+    std::string str = "Александр Васильевич Суворов 24 ноября 1730 генералиссимус";
+    for (int i = 0; i < str.find(" В"); i++)
+    {
+        _name += str[i];
+    }
+    for (int i = str.find("Васильевич"); i < str.find(" С"); i++)
+    {
+        _second_name += str[i];
+    }
+    for (int i = str.find("Суворов"); i < str.find(" 2"); i++)
+    {
+        _otchestvo += str[i];
+    }
+    for (int i = str.find("24"); i < str.find(" н"); i++)
+    {
+        _BirthDay += str[i];
+    }
+    for (int i = str.find("ноября"); i < str.find(" 1"); i++)
+    {
+        _BirthMonth += str[i];
+    }
+    for (int i = str.find("1730"); i < str.find(" г"); i++)
+    {
+        _BirthYear += str[i];
+    }
+    for (int i = str.find("генералиссимус"); i < str.length(); i++)
+    {
+        _title += str[i];
+    }
+    std::cout << _name;
+    std::cout << _second_name;
+    std::cout << _otchestvo;
+    std::cout << _BirthDay;
+    std::cout << _BirthMonth;
+    std::cout << _BirthYear;
+    std::cout << _title;
+
+    //Person person();
+	
+}
