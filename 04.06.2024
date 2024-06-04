@@ -72,3 +72,17 @@ int main()
 		std::cout << "| " <<  i + 1 << " - строка" << std::endl;
 	}
 }
+
+//---------------1-------------------
+//int a = 16;
+//int res = a << 1;
+//std::cout << res << std::endl;
+//
+//int b = 3;
+//int res_1 = b | 12;
+//std::cout << res_1 << std::endl;
+//
+//int c = 48;
+//int res_2 = c >> 3;
+//res_2 = res_2 & 4;
+//std::cout << res_2 << std::endl;
